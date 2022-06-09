@@ -1,15 +1,16 @@
 const express=require("express")
 const app=express()
 const mongoose=require("mongoose")
-const dotenv=require("dotenv")
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, './env') }
 const port=process.env.PORT||8000;
 const api=require("./routes/api/api.js")
 const cors=require("cors");
-dotenv.config()
-mongoose.connect(process.env.MONGO)
+mongoose.connect(process.env.MONGO,()=>console.log("connected"))
 cors();
 //routes
 app.use("/api",api)
+app.use(express.json())
 
 
 
