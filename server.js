@@ -19,5 +19,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //api route
+app.use(express.static('public'))
 app.use("/api",require("./routes/apiRoute"));
+app.get("/",(req,res)=>{
+  res.render("index.html")
+})
 app.listen(port,()=>{console.log(`app listening on port ${port}`)})

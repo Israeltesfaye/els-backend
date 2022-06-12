@@ -31,8 +31,8 @@ sav=await video.save();
 res.json("video posted succesfully")
 })
 //get video
-router.get("/video/:grade/:subject",async(req,res)=>{
-  const {title,grade,subject}=req.params;
+router.get("/video",async(req,res)=>{
+  const {title,grade,subject}=req.body;
   findvideo=await Video.find({title},{grade},{subject})
   res.json(findvideo)
 })
