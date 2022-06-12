@@ -1,9 +1,10 @@
 const router=require("express").Router();
-let announcements=require("../models/announcementModel");
+const Video=require("../models/videoModel");
+const announcements=require("../models/announcementModel");
+const quote=require("./quote");
 //get quote
 router.get("/quote",(req,res)=>{
- quote="we will replace this with actual quotes"
- res.json(quote)
+res.json(quote[Math.floor(Math.random(6)*7)])
 })
 //post announcements
 router.post("/announcement",async(req,res)=>{
@@ -11,15 +12,28 @@ announcement= await new announcements({
    title:req.body.title,
    content:req.body.content
  });
-ab=announcement.save()
-console.log(ab)
- res.json(announcement)
+ab=announcement.save();
 })
 //get announcements
 router.get("/announcement",async(req,res)=>{
 an= await  announcements.find();
 res.json(an)
-console.log(an)
 })
-
+//post video
+router.post("/video",async(req,res)=>{
+  video=new Video({
+    title:req.body.title,
+    url:req.body.url,
+    grade:req.body.grade,
+    subject:req.body.subject
+  });
+sav=await video.save();
+res.json("video posted succesfully")
+})
+//get video
+router.get("/video/:grade/:subject",async(req,res)=>{
+  const {title,grade,subject}=req.params;
+  findvideo=await Video.find({title},{grade},{subject})
+  res.json(findvideo)
+})
 module.exports=router;
