@@ -2,7 +2,7 @@ const express=require("express")
 const app=express()
 const mongoose=require("mongoose")
 const path = require('path')
-require('dotenv').config({ path: path.resolve(__dirname, './env') }
+require('dotenv').config()
 const port=process.env.PORT||8000;
 const api=require("./routes/api/api.js")
 const cors=require("cors");
