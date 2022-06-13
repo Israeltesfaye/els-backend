@@ -32,8 +32,7 @@ res.json("video posted succesfully")
 })
 //get video
 router.get("/video",async(req,res)=>{
-  const {title,grade,subject}=req.body;
-  findvideo=await Video.find({title},{grade},{subject})
-  res.json(findvideo)
+findvideo=await Video.find();
+res.json(findvideo);
 })
 module.exports=router;
