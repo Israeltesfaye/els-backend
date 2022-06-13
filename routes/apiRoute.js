@@ -13,6 +13,7 @@ announcement= await new announcements({
    content:req.body.content
  });
 ab=announcement.save();
+res.json("announcement posted succesfully")
 })
 //get announcements
 router.get("/announcement",async(req,res)=>{
