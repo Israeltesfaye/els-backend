@@ -18,3 +18,8 @@ input{
 button:hover{
 background:red;
 }
+nav{
+background-color:lightblue;
+height:10%;
+width:100%;
+}

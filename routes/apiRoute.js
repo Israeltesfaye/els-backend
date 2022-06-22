@@ -2,7 +2,8 @@ const router=require("express").Router();
 const Video=require("../models/videoModel");
 const announcements=require("../models/announcementModel");
 const quote=require("./quote");
-//get quote
+
+//get quote*/
 router.get("/quote",(req,res)=>{
 res.json(quote[Math.floor(Math.random(6)*7)])
 })
